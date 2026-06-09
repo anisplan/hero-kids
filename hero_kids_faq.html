@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero Kids — FAQ сообщества</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=IM+Fell+English:ital@0;1&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #f5e6c8;
+    --parchment-dark: #e8d5a8;
+    --border: #c8a86b;
+    --ink: #2a1a0a;
+    --ink-light: #4a3020;
+    --gold: #8b6914;
+    --gold-light: #c8a840;
+    --accent: #5a3010;
+    --green: #3a5820;
+    --red: #7a1a0a;
+    --blue: #1a3a5a;
+    --shadow: rgba(42,26,10,0.2);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #2a1a08;
+    background-image: repeating-linear-gradient(
+      45deg, transparent, transparent 2px,
+      rgba(200,160,70,.03) 2px, rgba(200,160,70,.03) 4px
+    );
+    font-family: 'Crimson Pro', Georgia, serif;
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 24px 16px;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    max-width: 900px; margin: 0 auto 32px;
+    background: var(--parchment);
+    border: 3px solid var(--border);
+    box-shadow: 0 0 0 1px var(--gold-light),
+                6px 6px 0 #4a3010,
+                0 12px 40px rgba(0,0,0,.5),
+                inset 0 0 60px rgba(200,160,70,.1);
+    padding: 36px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute; inset: 10px;
+    border: 1px solid rgba(200,168,107,.3);
+    pointer-events: none;
+  }
+  .header-logo {
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: 48px;
+    color: var(--accent);
+    text-shadow: 2px 2px 0 var(--ink), -1px -1px 0 var(--gold-light);
+    letter-spacing: 6px;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .header-sub {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    letter-spacing: 5px;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .header-rule {
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--border), var(--gold-light), var(--border), transparent);
+    margin: 16px 0;
+  }
+  .header-title {
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  .header-desc {
+    font-size: 14.5px;
+    color: var(--ink-light);
+    font-style: italic;
+    max-width: 540px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+  .header-meta {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  .meta-item {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+    text-align: center;
+  }
+  .meta-num {
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 900px; margin: 0 auto; }
+
+  /* ── TOC ── */
+  .toc {
+    background: var(--parchment-dark);
+    border: 2px solid var(--border);
+    box-shadow: 3px 3px 0 #4a3010, 0 6px 20px rgba(0,0,0,.3);
+    padding: 24px 32px;
+    margin-bottom: 28px;
+  }
+  .toc-title {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--accent);
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1.5px solid var(--border);
+  }
+  .toc-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 32px;
+    list-style: none;
+  }
+  .toc-list li a {
+    color: var(--ink-light);
+    text-decoration: none;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color .2s;
+  }
+  .toc-list li a:hover { color: var(--accent); }
+  .toc-list li a::before {
+    content: '◆';
+    color: var(--gold);
+    font-size: 8px;
+    flex-shrink: 0;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    background: var(--parchment);
+    border: 2px solid var(--border);
+    box-shadow: 3px 3px 0 #4a3010, 0 6px 20px rgba(0,0,0,.3),
+                inset 0 0 30px rgba(200,160,70,.06);
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+  .section-header {
+    background: var(--accent);
+    background-image: linear-gradient(135deg, var(--accent) 0%, #3a2008 100%);
+    padding: 16px 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .section-icon { font-size: 22px; flex-shrink: 0; }
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--gold-light);
+  }
+  .section-body { padding: 0; }
+
+  /* ── FAQ ITEM ── */
+  .faq-item {
+    border-bottom: 1px solid rgba(200,168,107,.25);
+    padding: 20px 28px;
+  }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-item:nth-child(even) { background: rgba(200,168,107,.04); }
+
+  .question {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.4;
+  }
+  .q-mark {
+    width: 22px; height: 22px;
+    background: var(--accent);
+    color: var(--gold-light);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 900;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .answer {
+    font-size: 15px;
+    color: var(--ink-light);
+    line-height: 1.7;
+    padding-left: 32px;
+  }
+  .answer p { margin-bottom: 8px; }
+  .answer p:last-child { margin-bottom: 0; }
+  .answer strong { color: var(--ink); font-weight: 600; }
+  .answer em { color: var(--accent); font-style: italic; }
+
+  /* Highlight boxes */
+  .tip {
+    background: rgba(58,88,32,.07);
+    border-left: 3px solid var(--green);
+    padding: 8px 14px;
+    margin: 10px 0;
+    font-size: 14.5px;
+    border-radius: 0 3px 3px 0;
+  }
+  .tip::before { content: '💡 '; }
+
+  .warn {
+    background: rgba(122,26,10,.06);
+    border-left: 3px solid var(--red);
+    padding: 8px 14px;
+    margin: 10px 0;
+    font-size: 14.5px;
+    border-radius: 0 3px 3px 0;
+  }
+  .warn::before { content: '⚠️ '; }
+
+  .quote {
+    background: rgba(200,168,107,.12);
+    border: 1px solid rgba(200,168,107,.4);
+    padding: 10px 16px;
+    margin: 10px 0;
+    font-style: italic;
+    font-size: 14.5px;
+    color: var(--ink-light);
+    position: relative;
+    border-radius: 2px;
+  }
+  .quote::before {
+    content: '"';
+    position: absolute;
+    top: -8px; left: 10px;
+    font-size: 32px;
+    color: var(--gold);
+    font-family: Georgia, serif;
+    line-height: 1;
+  }
+
+  /* list inside answer */
+  .answer ul {
+    padding-left: 20px;
+    margin: 8px 0;
+  }
+  .answer ul li { margin-bottom: 5px; }
+  .answer ul li::marker { color: var(--gold); }
+
+  /* ── POPULAR BADGE ── */
+  .popular {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--red);
+    border: 1px solid var(--red);
+    padding: 1px 6px;
+    margin-left: 8px;
+    vertical-align: middle;
+    opacity: .8;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    max-width: 900px; margin: 32px auto 0;
+    background: var(--parchment-dark);
+    border: 2px solid var(--border);
+    box-shadow: 3px 3px 0 #4a3010;
+    padding: 20px 32px;
+    text-align: center;
+  }
+  .footer p {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    line-height: 2;
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-logo">HERO KiDS</div>
+  <div class="header-sub">МАЛЕНЬКИЕ ГЕРОИ</div>
+  <div class="header-rule"></div>
+  <div class="header-title">FAQ СООБЩЕСТВА</div>
+  <div class="header-desc">
+    Вопросы и ответы по правилам, вождению и организации игры —
+    собраны из живого обсуждения русскоязычного сообщества Hero Kids
+  </div>
+  <div class="header-meta">
+    <div class="meta-item"><span class="meta-num">15</span>файлов чата</div>
+    <div class="meta-item"><span class="meta-num">7</span>разделов</div>
+    <div class="meta-item"><span class="meta-num">50+</span>вопросов</div>
+    <div class="meta-item"><span class="meta-num">100+</span>участников</div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- TOC -->
+<div class="toc">
+  <div class="toc-title">◆ СОДЕРЖАНИЕ</div>
+  <ul class="toc-list">
+    <li><a href="#buy">Где и как приобрести игру</a></li>
+    <li><a href="#rules">Основные правила и механики</a></li>
+    <li><a href="#combat">Боевая система</a></li>
+    <li><a href="#gm">Советы ведущему</a></li>
+    <li><a href="#players">Советы игрокам и родителям</a></li>
+    <li><a href="#components">Компоненты и фигурки</a></li>
+    <li><a href="#online">Онлайн-игра и инструменты</a></li>
+  </ul>
+</div>
+
+<!-- ══════════════════════════════════════════
+     РАЗДЕЛ 1: ПОКУПКА
+══════════════════════════════════════════ -->
+<div class="section" id="buy">
+  <div class="section-header">
+    <div class="section-icon">🛒</div>
+    <div class="section-title">ГДЕ И КАК ПРИОБРЕСТИ ИГРУ</div>
+  </div>
+  <div class="section-body">
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Где купить Hero Kids на русском языке?<span class="popular">ЧАСТО</span></div>
+      <div class="answer">
+        <p>Русский перевод Андрея Плиско доступен несколькими способами:</p>
+        <ul>
+          <li><strong>DTRPG (DriveThruRPG):</strong> официальный магазин, прямая ссылка на русскую версию. Базовая книга правил + стартовое приключение стоит около 6$.</li>
+          <li><strong>Boosty:</strong> <em>boosty.to/anisplan</em> — российская альтернатива Patreon, принимает рублёвые карты. Там же есть набор со скидкой, включающий все приключения.</li>
+          <li><strong>ЮMoney (Яндекс Деньги):</strong> кошелёк 410013453849962 — написать Андрею в личку, он вышлет ссылки через DTRPG.</li>
+        </ul>
+        <div class="tip">Если вы уже купили английскую версию — у автора можно заказать русскую копию бесплатно, написав напрямую.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Карта не проходит на DTRPG — что делать?<span class="popular">ЧАСТО</span></div>
+      <div class="answer">
+        <p>После ухода Visa/Mastercard из России и Беларуси оплата на DTRPG напрямую картой не работает. Варианты:</p>
+        <ul>
+          <li>Оплатить через <strong>Boosty</strong> — принимает российские карты без проблем.</li>
+          <li>Перевести через <strong>ЮMoney</strong> Андрею, он купит и перешлёт файлы на ваш email через DTRPG — все покупки окажутся в вашем личном кабинете.</li>
+          <li>Некоторые белорусские карты работают напрямую на сайте.</li>
+        </ul>
+        <div class="warn">Patreon перестал принимать российские карты. Переходите на Boosty.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Что входит в базовый набор?</div>
+      <div class="answer">
+        <p>После покупки базовой книги на DTRPG доступны <strong>4 файла</strong>:</p>
+        <ul>
+          <li>Полноцветная версия — правила, герои, монстры</li>
+          <li>Стартовое приключение «Подвал с крысами»</li>
+          <li>Две версии на белом фоне (для принтера) — экономят чернила</li>
+        </ul>
+        <div class="tip">Покупать сразу полный набор со скидкой выгоднее — если часть работ уже куплена, DTRPG автоматически вычтет их стоимость из цены набора.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Есть ли физическая (коробочная) версия?</div>
+      <div class="answer">
+        <p>Официальной коробки нет — игра изначально создавалась как PnP (Print-and-Play). Автор Джастин Холидей пока не дал разрешения на печатное издание для продажи.</p>
+        <p>Для личного использования можно распечатать самостоятельно. Участники чата заказывали в типографиях: цена около 839 руб./экземпляр тиражом 10 штук (формат A3, мелованная бумага 135 г/м², цветная печать).</p>
+        <div class="tip">Английская версия «для коллекции» есть на DTRPG, но мягкая обложка — не очень удобна для игры.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>В каком порядке проходить приключения?</div>
+      <div class="answer">
+        <p>Строгого порядка нет — автор специально строит модули так, чтобы играть в любой понравившийся в любом порядке. Для ориентира:</p>
+        <ul>
+          <li><strong>Лёгкие (вводные):</strong> Подвал с крысами, Пожар в Ривеншоре, Гробница Потерянного Короля</li>
+          <li><strong>Средние:</strong> приключения в Скриттеленде и далее</li>
+          <li><strong>Сложные:</strong> осенне-зимние модули по тематике</li>
+        </ul>
+        <div class="tip">«Тридевятое» (авторское приключение Андрея Плиско) лучше играть: сначала часть 1, потом часть 2.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     РАЗДЕЛ 2: ОСНОВНЫЕ ПРАВИЛА
+══════════════════════════════════════════ -->
+<div class="section" id="rules">
+  <div class="section-header">
+    <div class="section-icon">📖</div>
+    <div class="section-title">ОСНОВНЫЕ ПРАВИЛА И МЕХАНИКИ</div>
+  </div>
+  <div class="section-body">
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Как работает система кубиков?<span class="popular">ЧАСТО</span></div>
+      <div class="answer">
+        <p>В игре используются только обычные шестигранные кубики (к6). Система пулов: бросается несколько кубиков, берётся <strong>одно наибольшее значение</strong> — значения не суммируются.</p>
+        <div class="quote">Берётся наиболее высокое значение из пула. Если бросок атаки 6 — это автоматическое попадание, т.к. успех при равенстве значений за атакующим. Количество кубиков просто увеличивает шансы на высокий результат.</div>
+        <p>Пример: герой бросает 3 кубика атаки и выкидывает 2, 5, 3 — результат атаки равен 5. Монстр бросает 2 кубика защиты и выкидывает 4 и 6 — результат защиты равен 6. Атака не прошла.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Что даёт результат «6» при атаке — автоматическое попадание?</div>
+      <div class="answer">
+        <p><strong>Да</strong>, 6 — это автоматическое попадание при атаке, даже если у монстра тоже выпала 6 на защите. При равенстве результатов преимущество за атакующим.</p>
+        <p>Это работает в обе стороны: если монстр атакует и выбрасывает 6, герой должен выбросить тоже 6 на защите чтобы заблокировать — и тогда это всё равно попадание.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Как работают проверки способностей (не в бою)?</div>
+      <div class="answer">
+        <p>Герой бросает кубики соответствующей способности (Сила, Ловкость, Интеллект и т.д.) и сравнивает результат со сложностью. Если наибольшее значение из пула ≥ сложности — успех.</p>
+        <p><strong>Провал тоже должен двигать историю вперёд</strong> — не просто «не получилось», а «получилось, но с последствиями» или «прошло много времени».</p>
+        <div class="tip">Избегайте ситуаций «просто выброси нужное значение» без нарративного смысла. Любой бросок — это развитие истории.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>На сколько клеток ходят персонажи и монстры?</div>
+      <div class="answer">
+        <p>Стандартное перемещение указано на карточках персонажей и монстров. Обычный ход — <strong>4 клетки</strong>, бег — <strong>8 клеток</strong> (но тогда нельзя атаковать).</p>
+        <p>На карточке некоторых крыс написано «можно переместиться на две клетки дальше обычного» — это бонус сверх стандарта.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Когда нужно бросать инициативу?</div>
+      <div class="answer">
+        <p>В правилах написано просто: <em>«бросайте перед началом боя»</em>. Нюансы ситуативны:</p>
+        <ul>
+          <li>Если герои нападают первыми — они и ходят первыми (логично).</li>
+          <li>Если монстры настороже — можно бросать инициативу.</li>
+          <li>Если герои застали врасплох — монстры ходят первыми.</li>
+        </ul>
+        <p>Всё остаётся на усмотрение ведущего — правила не детализируют каждый нюанс намеренно.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Все ли навыки/способности описаны в книге правил?</div>
+      <div class="answer">
+        <p>Книга содержит базовый набор. Система устроена так, что при желании можно добавлять собственные способности с каждым новым героем. В готовых приключениях используется обычно даже меньше половины всего описанного в книге.</p>
+        <div class="tip">Можно придумать любое действие и обработать его механически. Если герой хочет заморозить реку магией — попробуйте, подберите подходящую проверку.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Можно ли придумывать нестандартные атаки и действия в бою?</div>
+      <div class="answer">
+        <p><strong>Да, и это поощряется!</strong> Хотя в карточках чётко описаны базовые атаки, любое творческое действие в рамках способностей персонажа можно обработать через проверку.</p>
+        <div class="quote">Лекарь использовала пустую банку от зелья, траву из инвентаря и способность «зельеварения» и сварила жидкость, которую ливанула через щель в двери. Крысы получили по 1 хиту. На следующем ходу в баночке сварила кислоту, которая разъела дверь вместе с засовом.</div>
+        <div class="warn">Зелья варятся вне боя как ритуал — не давайте слишком мощные эффекты в бою. Следите чтобы ресурсы ограничивали злоупотребления.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Что значат проверки способностей в «Подвале с крысами» (услышать крик, узнать про крыс)?</div>
+      <div class="answer">
+        <p>Это опциональные элементы обучения — они показывают принцип: если вы прислушиваетесь или присматриваетесь, то можете что-то найти или заметить.</p>
+        <ul>
+          <li>Проверка восприятия (услышать крик) — помогает героям понять куда идти, настраивает на поиск.</li>
+          <li>Проверка знаний (узнать про крыс) — даёт информацию, что крыс много.</li>
+        </ul>
+        <p>Если всё и так очевидно по контексту — можно пропустить броски. Это не критично для прохождения.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Монстры из книги правил — они есть во всех приключениях?</div>
+      <div class="answer">
+        <p>Во многих приключениях используются монстры из базовой книги, но всегда есть минимум один уникальный (как правило, босс). Крысы встречаются реже всего, скелеты и пауки — чаще. Есть отдельный Бестиарий с расширенным списком монстров.</p>
+        <div class="tip">Монстров можно заменять на подходящих по контексту — пауков на крыс, например, если у кого-то из игроков арахнофобия.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     РАЗДЕЛ 3: БОЕВАЯ СИСТЕМА
+══════════════════════════════════════════ -->
+<div class="section" id="combat">
+  <div class="section-header">
+    <div class="section-icon">⚔️</div>
+    <div class="section-title">БОЕВАЯ СИСТЕМА</div>
+  </div>
+  <div class="section-body">
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Кто и как атакует в бою?</div>
+      <div class="answer">
+        <p>Бой походовый. Каждый персонаж за ход может <strong>переместиться и атаковать</strong> (или только бежать). Ведущий управляет монстрами — они атакуют по своей тактике.</p>
+        <p>Крысы не агрессивны по умолчанию — они атакуют только если бой начался. Пока игра «в режиме приключения» можно пройти мимо не агрессивных крыс.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Кого атакуют монстры — ближайшего или выбирают цель?</div>
+      <div class="answer">
+        <p>Ведущий сам решает тактику монстров — это его выбор. Хороший подход:</p>
+        <ul>
+          <li>Разные крысы могут атаковать по-разному: одна яростно кусает ближайшего, другая обходит тылами и нападает на слабого, третья блокирует стрелка.</li>
+          <li>Животные ведут себя проще, люди строят тактические комбинации.</li>
+        </ul>
+        <div class="tip">Игрокам интересно чувствовать, что против них не просто набор безмозглых врагов, а противник который злится, трусит, радуется.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Что делать если бой затягивается и становится скучным?</div>
+      <div class="answer">
+        <p>Участники чата советуют:</p>
+        <ul>
+          <li>Сопровождать каждый бросок ярким описанием — даже повторяющиеся броски можно описывать по-разному.</li>
+          <li>Ввести условие победы помимо убийства — заставить монстра убежать, уронить его в яму, заблокировать.</li>
+          <li>Если все явно устали — позволить себе чуть подыграть: «случайно» ослабить монстра, добавить интересный поворот.</li>
+        </ul>
+        <div class="quote">Вместо победы над оборотнем можно заставить его убежать, окатив ведром воды.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Можно ли использовать элементы окружения в бою?</div>
+      <div class="answer">
+        <p><strong>Да, и очень рекомендуется!</strong> Это один из ключевых способов сделать бой интереснее.</p>
+        <ul>
+          <li>Залезть на стол — +1 куб. брони</li>
+          <li>Перевернуть столы перед собой — голем не может перешагнуть</li>
+          <li>Закрыть дверь — не дать монстрам войти</li>
+          <li>Встать «спина к спине» — защищать позицию вдвоём</li>
+          <li>Столкнуть бочки на врагов, использовать верёвку, бросить шлем</li>
+        </ul>
+        <div class="tip">Подсказывайте игрокам возможности: «Ты можешь сходить, атаковать или придумать что-то, что поможет победить».</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Нужно ли делать отдельные броски для каждого перехода в новую локацию?</div>
+      <div class="answer">
+        <p>Зависит от ситуации. Если нужно перебраться через препятствие — делается проверка. Важный момент:</p>
+        <p><strong>Герои могут помогать друг другу</strong>, снижая сложность проверок. Один держит лестницу снизу — другому легче лезть. Это хорошая возможность для командной работы.</p>
+        <p>Если один герой не прошёл проверку — другие могут его подтянуть, подставить плечо, бросить верёвку.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     РАЗДЕЛ 4: СОВЕТЫ ВЕДУЩЕМУ
+══════════════════════════════════════════ -->
+<div class="section" id="gm">
+  <div class="section-header">
+    <div class="section-icon">🎭</div>
+    <div class="section-title">СОВЕТЫ ВЕДУЩЕМУ</div>
+  </div>
+  <div class="section-body">
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Как заставить детей думать нестандартно, а не просто бить врагов?<span class="popular">ЧАСТО</span></div>
+      <div class="answer">
+        <p>Это одна из самых обсуждаемых тем в чате. Несколько проверенных стратегий:</p>
+        <ul>
+          <li><strong>Убрать поле и миниатюрки</strong> — всё на словесном описании. Поле с клеточками настраивает на «ход-удар-ход» и ограничивает мышление.</li>
+          <li><strong>Выставить барьеры</strong> — простые действия не работают. Дети делают 3-4 безуспешные попытки «в лоб», после чего начинают придумывать.</li>
+          <li><strong>Заранее придумать нестандартные решения самому</strong> и описывать среду намёками: «возможно», «не случайно», «скорее всего».</li>
+          <li><strong>Прямо спросить</strong>: «Ты можешь сходить, атаковать или придумать что-то, что поможет победить».</li>
+        </ul>
+        <div class="quote">Когда не получалось залезть на выступ, я предложил в следующий ход прекратить попытки и сесть/подумать. Ребёнок попросил помощи у духа-хранителя. Мы описали как невидимые руки поддерживают её.</div>
+        <div class="tip">Поощряйте за хороший отыгрыш! Даже маленький бонус мотивирует думать творчески.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Что делать если ребёнок хочет решить всё мирно, без боя?</div>
+      <div class="answer">
+        <p>Это отличный порыв — поощряйте его! Адаптируйте бросок: вместо атаки — проверка Силы голоса, Ловкости (отвлечь трюком) или Интеллекта (убедить).</p>
+        <p>Если враг «уговорён» — он пропускает героя, убегает или на раунд впадает в ступор.</p>
+        <div class="quote">Дочь не хотела бить крыс, а начала с ними разговаривать и уговаривать. Пришлось импровизировать — разделил крыс на условно добрых (можно убедить) и злых с красными глазами (нельзя договориться).</div>
+        <div class="tip">Можно разделить любых врагов на «договороспособных» и «нет» — это и сложность добавляет, и нарратив.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Как подготовиться к первой игре?</div>
+      <div class="answer">
+        <ul>
+          <li>Прочитайте правила и приключение 2-3 раза заранее — знайте что за чем идёт.</li>
+          <li>Не нужно следовать каждой букве правил — задача получить удовольствие, не сдать экзамен по математике.</li>
+          <li>Лучший способ подготовки — провести несколько боёв самому: пару боевых сцен и пару социальных взаимодействий.</li>
+          <li>Для начала не заморачивайтесь всеми характеристиками — Сила, Ловкость и HP для старта достаточно.</li>
+        </ul>
+        <div class="tip">Сделайте ширму ведущего со шпаргалками — таблица перемещений, список способностей героев, порядок хода.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Зачитывать курсивный текст вслух или пересказывать?</div>
+      <div class="answer">
+        <p>Оба варианта работают. Пересказ обычно звучит живее и атмосфернее — но для этого нужно хорошо знать текст заранее. Зачитывать тоже можно, главное делать это выразительно.</p>
+        <p>Курсивный текст — это вводные описания сцен для зачитывания игрокам. Обычный текст — информация для ведущего.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Как управлять тактикой монстров интересно?</div>
+      <div class="answer">
+        <p>Ключевой совет из чата: монстры — не просто набор характеристик, они реагируют на происходящее.</p>
+        <ul>
+          <li>Если монстра ранили — он злится или, наоборот, пугается</li>
+          <li>Умный монстр блокирует стрелка, навязывая ближний бой</li>
+          <li>Трусливые монстры убегают когда их остаётся меньше половины</li>
+          <li>Животные — проще, действуют инстинктами</li>
+        </ul>
+        <div class="quote">Две крысы поссорились из-за того, кому достанется сумка лежащего без сознания мага с куском сыра — и им было не до израненных героев.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Как добавить головоломки в приключение?</div>
+      <div class="answer">
+        <p>Участники чата собрали целую коллекцию идей:</p>
+        <ul>
+          <li><strong>Цветные камни и отверстия</strong> — нужно вставить камни нужного цвета в правильные углубления</li>
+          <li><strong>Смешивание цветов</strong> — красный + жёлтый = оранжевый. Можно принести настоящую подкрашенную воду!</li>
+          <li><strong>Часы</strong> — круг с 12 делениями, найти записку с временем и выставить камни правильно</li>
+          <li><strong>Статуи с загадкой</strong> — опустить руку статуи нужного существа по подсказке («небо не горит»)</li>
+          <li><strong>Пазл с буквами</strong> — расставить готовые буквы чтобы получились слова</li>
+          <li><strong>Камень-ножницы-бумага</strong> — три камня (синий/красный/коричневый), три углубления с изображениями (огонь/вода/дерево), нужно вставить по логике</li>
+        </ul>
+        <div class="tip">Для 6-7 лет: один шаг «вижу → понимаю → делаю», подсказка всегда рядом, ошибка не наказывается.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Как быть если ребёнок делает совсем неожиданный ход?</div>
+      <div class="answer">
+        <p>Импровизация — неотъемлемая часть НРИ. Несколько принципов:</p>
+        <ul>
+          <li><strong>Хорошо знать мир и сюжет</strong> — тогда легче придумывать «на лету».</li>
+          <li><strong>Думать быстро</strong> — игроки ждут. Если нужна пауза — «монстр рычит и медленно приближается».</li>
+          <li><strong>Использовать ответ игрока</strong> — если игрок предположил как работает магический предмет, подтвердите это! «Да, именно так он и работает».</li>
+        </ul>
+        <div class="quote">Сын достал гоночную машину орков и сказал что она пробивает стену пещеры и орки из пулемёта расстреливают всех крыс. Иногда надо просто принять рояль из кустов и двигаться дальше.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Нужно ли давать опыт и уровни персонажам?</div>
+      <div class="answer">
+        <p>В базовой игре системы опыта нет — персонажи получают <strong>предметы и снаряжение</strong> в награду за успешно завершённые квесты или отличные решения. Есть отдельное дополнение с карточками развития (уровни, новые способности).</p>
+        <div class="tip">Карточки развития входят в набор со скидкой на Boosty. Для начинающих лучше не использовать их сразу — усложняет игру.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Как использовать NPC и питомцев?</div>
+      <div class="answer">
+        <p>NPC может играть роль помощника героев — полезно когда один ребёнок играет один, и нужен «второй персонаж». Лучше ввести его как часть мира: дух-хранитель, верный питомец, временный союзник.</p>
+        <p>Питомцы — отдельное дополнение. Управлять двумя персонажами маленькому ребёнку бывает тяжело, помогайте с этим.</p>
+        <div class="warn">Если взрослый садится игроком рядом с ребёнком — следите чтобы взрослый не «перетягивал» решения задач на себя. Ребёнок должен быть главным героем.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     РАЗДЕЛ 5: СОВЕТЫ ИГРОКАМ И РОДИТЕЛЯМ
+══════════════════════════════════════════ -->
+<div class="section" id="players">
+  <div class="section-header">
+    <div class="section-icon">👨‍👧</div>
+    <div class="section-title">СОВЕТЫ ИГРОКАМ И РОДИТЕЛЯМ</div>
+  </div>
+  <div class="section-body">
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>С какого возраста играть?<span class="popular">ЧАСТО</span></div>
+      <div class="answer">
+        <p>Официально — от 4 до 10 лет. На практике из чата:</p>
+        <ul>
+          <li><strong>4-5 лет</strong> — можно пробовать, но только с очень простыми сценами, без генерации персонажа</li>
+          <li><strong>6-7 лет</strong> — золотой возраст для Hero Kids</li>
+          <li><strong>8-10 лет</strong> — отлично работает, дети уже инициативнее</li>
+          <li><strong>10+ лет</strong> — многим нравится, хотя некоторые хотят чего-то посложнее</li>
+          <li><strong>Взрослые</strong> — тоже играют и получают удовольствие, хотя тактики минимум</li>
+        </ul>
+        <div class="tip">Младшим (6-7) не стоит давать подготовительные этапы вроде генерации персонажа — «бросайте» сразу в игру.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Можно ли играть вдвоём — мастер и один ребёнок?<span class="popular">ЧАСТО</span></div>
+      <div class="answer">
+        <p><strong>Да, вполне играбельно.</strong> Несколько советов для игры 1 на 1:</p>
+        <ul>
+          <li>В крайнем случае добавьте NPC-помощника — дух, питомец, мирный житель</li>
+          <li>Адаптируйте количество монстров (таблицы в приключениях это учитывают)</li>
+          <li>Объясните ребёнку, что он играет не за себя, а за персонажа</li>
+        </ul>
+        <div class="quote">Играл 1+1. Вполне вменяемо, главное объяснить ребёнку, что он играет не за себя, а за персонажа.</div>
+        <div class="tip">С двумя игроками становится намного интереснее — один предложил идею, другой сразу другую, игра оживает.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Можно ли сажать взрослых (родителей) игроками к детям?</div>
+      <div class="answer">
+        <p>Можно, но осторожно. Риск: взрослый-прожжёный ролевик может перетягивать решения на себя. Лучший вариант — взрослый помогает советами через своего персонажа, а не доминирует.</p>
+        <div class="quote">Я беру себе полноценного персонажа. Но слежу чтобы инициатива оставалась за ребёнком. Кто-то должен вести, но не вести вместо ребёнка.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Что больше нравится детям — бои или сюжет?</div>
+      <div class="answer">
+        <p>По опыту участников чата — <strong>зависит от ребёнка</strong>:</p>
+        <ul>
+          <li>Младшим (6-7) часто больше нравится сюжет</li>
+          <li>Старшим нравится и то и другое, особенно решение ситуаций через кубики</li>
+          <li>Многие дети обожают создавать персонажей и придумывать заклинания — дайте им это время</li>
+        </ul>
+        <p>Совет: меняйте темп. Боевые сцены чередуйте с исследованием, загадками и разговорами с NPC.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Как ввести ребёнка в НРИ если он привык к компьютерным играм?</div>
+      <div class="answer">
+        <p>Главная задача — показать что в НРИ <strong>возможно всё что угодно</strong>, а не только то что разрешено игрой. Это принципиальное отличие.</p>
+        <ul>
+          <li>Начинайте без поля — словесное описание снимает ощущение «разрешённых действий»</li>
+          <li>Поощряйте любую нестандартную идею</li>
+          <li>Дайте почувствовать что их решения реально влияют на историю</li>
+        </ul>
+        <div class="quote">Дети, как правило, делают штуки 3-4 безысходных попытки в лоб, после чего начинают что-нибудь придумывать.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Как использовать Hero Kids для коррекционного обучения?</div>
+      <div class="answer">
+        <p>В чате описывался опыт клинического психолога, использующего Hero Kids при работе с детьми с аутизмом. Игра хорошо работает для:</p>
+        <ul>
+          <li>Развития коммуникативных навыков</li>
+          <li>Тренировки социальных сценариев в безопасной обстановке</li>
+          <li>Работы с импульсивностью через структуру ходов</li>
+          <li>Развития эмпатии через отыгрыш персонажей</li>
+        </ul>
+        <div class="tip">Статья на Хабре «Hero Kids в коррекционном обучении» — хорошая отправная точка: habr.com/ru/post/508298/</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     РАЗДЕЛ 6: КОМПОНЕНТЫ И ФИГУРКИ
+══════════════════════════════════════════ -->
+<div class="section" id="components">
+  <div class="section-header">
+    <div class="section-icon">🎲</div>
+    <div class="section-title">КОМПОНЕНТЫ, ФИГУРКИ И ПЕЧАТЬ</div>
+  </div>
+  <div class="section-body">
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Чем пользоваться вместо фигурок?<span class="popular">ЧАСТО</span></div>
+      <div class="answer">
+        <p>Участники чата пробовали много вариантов:</p>
+        <ul>
+          <li><strong>Бумажные миниатюрки</strong> из книги — распечатать, сложить пополам, вставить в подставку</li>
+          <li><strong>Подставки с Aliexpress</strong> (~131-525 руб. за набор) — прозрачные пластиковые держатели для бумажных карт</li>
+          <li><strong>Скрепки-зажимы</strong> — прищепить к основанию карточки, хотя закрывают рисунок</li>
+          <li><strong>Фигурки из других игр</strong> — из Pathfinder, Kinder-сюрпризов, Lego, Ниндзяго</li>
+          <li><strong>Кастомные Lego-минифигурки</strong> — можно раскрасить акриловыми красками</li>
+          <li><strong>3D-печать</strong> — фотополимерные принтеры дают хорошее качество миниатюр</li>
+        </ul>
+        <div class="tip">Для бумажных миниатюр: вложить в сгиб полоску картона толщиной 1 мм — фигурки держатся как влитые в прозрачных подставках.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Как лучше распечатать книгу правил?</div>
+      <div class="answer">
+        <p>Из опыта участников чата:</p>
+        <ul>
+          <li>В типографии: ~839 руб./экз. тиражом 10 штук (A3, мелованная 135 г/м², цветная)</li>
+          <li>Искать энтузиастов нестандартной печати — обычные салоны могут не знать как верстать</li>
+          <li>Для личного пользования — даже обычный ч/б принтер вполне подойдёт (в комплекте есть версия на белом фоне)</li>
+        </ul>
+        <div class="tip">Бумага матричных принтеров с перфорацией (A4 с двусторонней печатью) иногда выходит дешевле обычной. Продаётся в коробках по 2000 листов.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Какой размер клетки на картах?</div>
+      <div class="answer">
+        <p>Стандарт Джастина — примерно <strong>2×2 см</strong> (около 20-22 мм). Это подходит и под бумажные миниатюрки из книги, и под стандартные D&D-миниатюры.</p>
+        <p>Все официальные карты придерживаются этого стандарта.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Где взять токены и карту Ривеншора?</div>
+      <div class="answer">
+        <ul>
+          <li><strong>Токены и альтернативные чарники:</strong> wimlepage.com/hero-kids</li>
+          <li><strong>Карта мира (неофициальная, бесплатно):</strong> drivethrurpg.com — «Hero kids campaign map unofficial»</li>
+          <li><strong>Карта Ривеншора и эскизы NPC</strong> от художника Эрика Куигли — в официальной группе Джастина на Facebook</li>
+          <li><strong>Генератор подземелий:</strong> watabou.itch.io/one-page-dungeon</li>
+          <li><strong>Редактор карт:</strong> dungeonscrawl.com</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Можно ли раскрашивать бумажные миниатюрки?</div>
+      <div class="answer">
+        <p><strong>Да, и это очень нравится детям!</strong> Распечатать ч/б версию и раскрашивать карандашами или маркерами перед каждым новым приключением — хорошая традиция. Особенно здорово если дети сами раскрашивают монстров, которых им предстоит встретить — небольшой спойлер, но зато дополнительное вовлечение.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     РАЗДЕЛ 7: ОНЛАЙН-ИГРА
+══════════════════════════════════════════ -->
+<div class="section" id="online">
+  <div class="section-header">
+    <div class="section-icon">💻</div>
+    <div class="section-title">ОНЛАЙН-ИГРА И ИНСТРУМЕНТЫ</div>
+  </div>
+  <div class="section-body">
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Как играть онлайн?<span class="popular">ЧАСТО</span></div>
+      <div class="answer">
+        <p>Стандартная связка в сообществе:</p>
+        <ul>
+          <li><strong>Roll20</strong> — карты, кубики, токены. Свои карты можно загружать. Бесплатно для базового использования.</li>
+          <li><strong>Discord</strong> — голосовой и видеочат. Надёжнее чем встроенный звук Roll20.</li>
+        </ul>
+        <p>Альтернативы:</p>
+        <ul>
+          <li><strong>Foundry VTT</strong> — хвалят за мощность, но нужно устанавливать самостоятельно (~50$ единоразово)</li>
+          <li><strong>Astral Tabletop</strong> — онлайн, хорошие возможности</li>
+          <li><strong>Telegram + дайсбот</strong> — для текстового формата</li>
+        </ul>
+        <div class="tip">Для разовой игры с детьми Roll20 + Discord хватит с головой, голос/видео в дискорде надёжнее встроенного.</div>
+        <div class="warn">Дайсботы в Telegram с критфэйлами могут отбивать желание играть — учитывайте это при текстовой игре.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Есть ли видеозаписи игр на русском?</div>
+      <div class="answer">
+        <p>Видеозаписей немного — детей сложнее снимать, родители осторожничают.</p>
+        <ul>
+          <li>На YouTube есть видеозапись пробной игры взрослых по Hero Kids от Андрея Плиско</li>
+          <li>Джастин Холидей играл с детьми — записи на его YouTube канале (на английском)</li>
+          <li>Текстовые отзывы и отчёты на Тесере и в блогах — значительно больше</li>
+        </ul>
+        <div class="tip">Статья Svolod на Imaginaria: imaginaria.ru/family_rpg/hero-kids-ili-deti-geroi.html — один из лучших обзоров с реальным игровым опытом.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Можно ли использовать ИИ для подготовки к игре?</div>
+      <div class="answer">
+        <p>Да, участники чата активно используют ChatGPT и Claude для:</p>
+        <ul>
+          <li>Генерации идей для сюжетов</li>
+          <li>Описания локаций, NPC, предметов</li>
+          <li>Создания реплик и мотиваций персонажей</li>
+          <li>Помощи с импровизацией</li>
+          <li>Создания мини-игр и побочных квестов</li>
+        </ul>
+        <div class="warn">С математикой у ИИ бывают ошибки — проверяйте числовые характеристики монстров и балансовые расчёты самостоятельно.</div>
+        <div class="tip">Claude хвалят за художественные описания. ChatGPT использовали для адаптации характеристик из D&D под другие системы.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question"><div class="q-mark">?</div>Какими программами пользуются для подготовки приключений?</div>
+      <div class="answer">
+        <ul>
+          <li><strong>Тексты:</strong> Word, Google Docs, OneNote, Obsidian</li>
+          <li><strong>Карты:</strong> Dungeon Painter Studio, Dungeon Scrawl (dungeonscrawl.com), Inkarnate, Dungeon Painter + Photoshop</li>
+          <li><strong>Генераторы подземелий:</strong> watabou.itch.io/one-page-dungeon</li>
+          <li><strong>Заметки ведущего:</strong> Trello (карточки локаций, персонажей), RPG Notes (мобильное)</li>
+          <li><strong>PDF:</strong> Soda PDF, Scribus, Homebrewery</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<!-- FOOTER -->
+<div class="footer">
+  <p>HERO KIDS · МАЛЕНЬКИЕ ГЕРОИ · FAQ СООБЩЕСТВА</p>
+  <p>Составлено на основе Telegram-чата русскоязычного сообщества Hero Kids</p>
+  <p>Автор перевода и сообщества: Андрей Плиско · boosty.to/anisplan</p>
+  <p>Оригинальная игра: Джастин Холидей · drivethrurpg.com</p>
+</div>
+
+</body>
+</html>
